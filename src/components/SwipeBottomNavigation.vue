@@ -17,10 +17,9 @@
         </div>
         <div
           :class="['sm-btn-title', { 'sm-btn-title-active': button.selected }]"
-        ></div>
-      </div>
-      <div v-if="button.modal">
-        {{ button.modalBox }}
+        >
+          {{ button.title }}
+        </div>
       </div>
     </div>
     <div ref="borderSwiperRef" class="border-swiper" />
@@ -47,6 +46,8 @@ type SwipeProps = {
   backgroundColor?: string;
   iconColor?: string;
   replaceRoute?: boolean;
+  modal?: boolean;
+  modalOpen?: number | string | null;
 };
 
 const props = withDefaults(defineProps<SwipeProps>(), {
@@ -56,8 +57,10 @@ const props = withDefaults(defineProps<SwipeProps>(), {
   iconColor: '#8066C7',
   swiperColor: '#8066C7',
   replaceRoute: false,
+  modal: false,
+  modalOpen: null,
 });
-const emit = defineEmits(['update:modelValue', 'openModal']);
+const emit = defineEmits(['update:modelValue', 'modalOpen']);
 
 const router = useRouter();
 const route = useRoute();
@@ -166,6 +169,7 @@ function updateValue(button: SwipeOption) {
   }, 0);
 
   if (button.path && Object.keys(button.path).length && !button.modal) {
+    emit('modalOpen', null);
     if (props.replaceRoute) {
       router.replace(button.path).catch(() => {});
     } else {
@@ -174,7 +178,7 @@ function updateValue(button: SwipeOption) {
   }
 
   if (button.modal) {
-    emit('openModal', button.modalBox);
+    emit('modalOpen', button.modalName);
   }
 }
 

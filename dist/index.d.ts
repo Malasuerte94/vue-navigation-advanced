@@ -72,7 +72,7 @@ export interface SwipeOption {
     selected?: boolean;
     path?: Path | string;
     modal?: boolean;
-    modalBox?: object;
+    modalName?: string;
 }
 export interface SwipeProps {
     modelValue: number | string | null;
