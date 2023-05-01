@@ -1,14 +1,14 @@
 {
-  "name": "bottom-navigation-vue",
-  "version": "3.3.2",
-  "description": "Vue Bottom Navigation",
-  "private": false,
+  "name": "vue-navigation-advanced",
+  "version": "1.0.0",
+  "description": "Vue Navigation Advanced",
+  "private": true,
   "author": {
-    "name": "Iman Malekian",
-    "email": "imanmalekian31@gmail.com"
+    "name": "MalaTheMan",
+    "email": "ene.catalin.94@gmail.com"
   },
-  "repository": "https://github.com/imanmalekian31/vue-bottom-navigation",
-  "bugs": "https://github.com/imanmalekian31/vue-bottom-navigation/issues",
+  "repository": "https://github.com/Malasuerte94/vue-navigation-advanced",
+  "bugs": "https://github.com/Malasuerte94/vue-navigation-advanced/issues",
   "keywords": [
     "vue",
     "bottom",
