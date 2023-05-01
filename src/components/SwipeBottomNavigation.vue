@@ -23,7 +23,6 @@
         {{ button.modalBox }}
       </div>
     </div>
-    <slot v-if="modal" name="modal"></slot>
     <div ref="borderSwiperRef" class="border-swiper" />
   </div>
 </template>
@@ -48,7 +47,6 @@ type SwipeProps = {
   backgroundColor?: string;
   iconColor?: string;
   replaceRoute?: boolean;
-  modal?: boolean;
 };
 
 const props = withDefaults(defineProps<SwipeProps>(), {
@@ -58,9 +56,8 @@ const props = withDefaults(defineProps<SwipeProps>(), {
   iconColor: '#8066C7',
   swiperColor: '#8066C7',
   replaceRoute: false,
-  modal: false,
 });
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'openModal']);
 
 const router = useRouter();
 const route = useRoute();
@@ -143,7 +140,9 @@ function onResize() {
 
 function handleButtonClick(button: SwipeOption, index: number) {
   if (index === currSelected.value) {
-    return;
+    if (!button.modal) {
+      return;
+    }
   }
 
   currSelected.value = index;
@@ -166,12 +165,16 @@ function updateValue(button: SwipeOption) {
     enableWatch.value = true;
   }, 0);
 
-  if (button.path && Object.keys(button.path).length) {
+  if (button.path && Object.keys(button.path).length && !button.modal) {
     if (props.replaceRoute) {
       router.replace(button.path).catch(() => {});
     } else {
       router.push(button.path);
     }
+  }
+
+  if (button.modal) {
+    emit('openModal', button.modalBox);
   }
 }
 
