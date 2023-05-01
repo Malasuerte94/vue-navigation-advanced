@@ -15,7 +15,7 @@
             <i :class="`${button.icon}`" />
           </slot>
         </div>
-
+        wow
         <div
           :class="['sm-btn-title', { 'sm-btn-title-active': button.selected }]"
         >
