@@ -2,7 +2,7 @@
   "name": "vue-navigation-advanced",
   "version": "1.0.0",
   "description": "Vue Navigation Advanced",
-  "private": true,
+  "private": false,
   "author": {
     "name": "MalaTheMan",
     "email": "ene.catalin.94@gmail.com"
