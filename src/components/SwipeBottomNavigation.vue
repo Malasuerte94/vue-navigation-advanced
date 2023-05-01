@@ -15,14 +15,12 @@
             <i :class="`${button.icon}`" />
           </slot>
         </div>
-        wow
         <div
           :class="['sm-btn-title', { 'sm-btn-title-active': button.selected }]"
-        >
-          <slot name="title" :props="button">
-            {{ button.title }}
-          </slot>
-        </div>
+        ></div>
+      </div>
+      <div v-if="button.modal">
+        {{ button.modalBox }}
       </div>
     </div>
     <slot v-if="modal" name="modal"></slot>
