@@ -25,6 +25,7 @@
         </div>
       </div>
     </div>
+    <slot v-if="modal" name="modal"></slot>
     <div ref="borderSwiperRef" class="border-swiper" />
   </div>
 </template>
@@ -49,6 +50,7 @@ type SwipeProps = {
   backgroundColor?: string;
   iconColor?: string;
   replaceRoute?: boolean;
+  modal?: boolean;
 };
 
 const props = withDefaults(defineProps<SwipeProps>(), {
@@ -58,6 +60,7 @@ const props = withDefaults(defineProps<SwipeProps>(), {
   iconColor: '#8066C7',
   swiperColor: '#8066C7',
   replaceRoute: false,
+  modal: false,
 });
 const emit = defineEmits(['update:modelValue']);
 
